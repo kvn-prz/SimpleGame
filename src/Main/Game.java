@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -21,27 +22,31 @@ public class Game extends Application {
 	//key input
 	private KeyboardInput input;
 	
+	//handler
+	private Handler handler;
+	
 	//root pane properties
 	public static final double SCALE = 2.5;
 	public static final double WIDTH = 500*SCALE;
 	public static final double HEIGHT = 300*SCALE;
 	
-	
 	//window properties
-	private static final String TITLE = "TU CARA";
+	private static final String TITLE = "Simple Game";
 	
 	//worlds
 	WorldOne w1;
 	
 	//launch method for main method
 	public static void launchGame() {launch();}
-	
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	@Override
 	public void start(Stage stage) throws Exception {
 		
 		init();
 		stage.setScene(scene);
 		stage.setTitle(TITLE);
+		stage.getIcons().add(new Image("/Resources/icon.png"));
 		stage.show();
 		
 		//loop
@@ -53,6 +58,7 @@ public class Game extends Application {
 			}
 		};timer.start();
 	}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	public void init() {
 		root = new Pane();
@@ -60,7 +66,8 @@ public class Game extends Application {
 		canvas = new Canvas(WIDTH, HEIGHT);
 		gc = canvas.getGraphicsContext2D();
 		input = new KeyboardInput();
-		w1 = new WorldOne(input);
+		handler = new Handler(this);
+		w1 = new WorldOne(handler);
 		root.getChildren().add(canvas);
 	}
 	
@@ -74,5 +81,10 @@ public class Game extends Application {
 		gc.fillRect(0, 0, WIDTH, HEIGHT);
 		w1.render(gc);
 	}
+	
+	//getters
+	public KeyboardInput getKeyInput() {return this.input;}
+	public double getWidth() {return WIDTH;}
+	public double getHeight() {return HEIGHT;}
 	
 }
