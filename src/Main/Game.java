@@ -26,11 +26,11 @@ public class Game extends Application {
 	private Handler handler;
 	
 	//root pane properties
-	public static final double SCALE = 2.5;
+	public static final double SCALE = 2.4;
 	public static final double WIDTH = 500*SCALE;
 	public static final double HEIGHT = 300*SCALE;
 	
-	//window properties
+	//window title
 	private static final String TITLE = "Simple Game";
 	
 	//worlds
