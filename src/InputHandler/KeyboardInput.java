@@ -1,5 +1,6 @@
 package InputHandler;
 
+import Main.Game;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
@@ -22,6 +23,7 @@ public class KeyboardInput {
 				case A: setLeft(true); break;
 				case D: setRight(true); break;
 				case SPACE: setJump(true); break;
+				case ESCAPE: Game.state = "pause"; break;
 				}}});
 	}
 	

@@ -1,5 +1,6 @@
 package Main;
 import InputHandler.KeyboardInput;
+import InputHandler.MouseInput;
 import Worlds.WorldOne;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -19,9 +20,9 @@ public class Game extends Application {
 	private GraphicsContext gc;
 	private Scene scene;
 	
-	//key input
-	private KeyboardInput input;
-	
+	//input
+	private KeyboardInput keyInput;
+	private MouseInput mouseInput;
 	//handler
 	private Handler handler;
 	
@@ -36,6 +37,11 @@ public class Game extends Application {
 	//worlds
 	WorldOne w1;
 	
+	//states
+	public static String state;
+	private MainMenu menu;
+	private PauseMenu pause;
+	
 	//launch method for main method
 	public static void launchGame() {launch();}
 
@@ -46,6 +52,9 @@ public class Game extends Application {
 		init();
 		stage.setScene(scene);
 		stage.setTitle(TITLE);
+		stage.setWidth(WIDTH);
+		stage.setHeight(HEIGHT);
+		stage.setResizable(false);
 		stage.getIcons().add(new Image("/Resources/icon.png"));
 		stage.show();
 		
@@ -53,8 +62,8 @@ public class Game extends Application {
 		AnimationTimer timer = new AnimationTimer() {
 			@Override
 			public void handle(long now) {
-				tick(scene);
-				render(gc);
+				tick();
+				render();
 			}
 		};timer.start();
 	}
@@ -65,26 +74,37 @@ public class Game extends Application {
 		scene = new Scene(root);
 		canvas = new Canvas(WIDTH, HEIGHT);
 		gc = canvas.getGraphicsContext2D();
-		input = new KeyboardInput();
+		keyInput = new KeyboardInput();
+		mouseInput = new MouseInput();
 		handler = new Handler(this);
-		w1 = new WorldOne(handler);
 		root.getChildren().add(canvas);
+		
+		w1 = new WorldOne(handler);
+		menu = new MainMenu();
+		pause = new PauseMenu();
+		state = "menu";
 	}
 	
-	public void tick(Scene scene) {
-		input.tick(scene);
-		w1.tick();
+	public void tick() {
+		switch(state) {
+			case "game": keyInput.tick(scene); w1.tick(); break;
+			case "menu": mouseInput.tick(scene) ;break;
+			case "pause": mouseInput.tick(scene); break;
+			case "exit": System.exit(0);
+		}
+		
 	}
 	
-	public void render(GraphicsContext gc) {
-		gc.setFill(Color.BLACK);
-		gc.fillRect(0, 0, WIDTH, HEIGHT);
-		w1.render(gc);
+	public void render() {
+		switch(state) {
+			case "game": w1.render(gc); break;
+			case "menu": menu.render(gc); break;
+			case "pause": pause.render(gc);
+		}
 	}
 	
 	//getters
-	public KeyboardInput getKeyInput() {return this.input;}
+	public KeyboardInput getKeyInput() {return this.keyInput;}
 	public double getWidth() {return WIDTH;}
-	public double getHeight() {return HEIGHT;}
-	
+	public double getHeight() {return HEIGHT;}	
 }
