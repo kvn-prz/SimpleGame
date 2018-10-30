@@ -1,5 +1,6 @@
 package Worlds;
 
+import Entities.Player;
 import Main.Handler;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -15,4 +16,6 @@ public abstract class WorldBase {
 	public abstract void tick();
 	public abstract void render(GraphicsContext gc);
 	
+	//getter
+	public abstract Player getPlayer();
 }

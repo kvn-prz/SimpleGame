@@ -10,15 +10,15 @@ public class MainMenu {
 	private Image quit;
 	
 	public MainMenu() {
-		this.bg = new Image("/Resources/menuBG.png");
-		this.start = new Image("/Resources/start.png");
-		this.quit = new Image("/Resources/quit.png");
+		this.bg = new Image("/res/menuBG.png");
+		this.start = new Image("/res/start.png");
+		this.quit = new Image("/res/quit.png");
 	}
 	
 	public void render(GraphicsContext gc) {
 		gc.drawImage(bg, 0, 0);
-		gc.drawImage(start, 700, 200);
-		gc.drawImage(quit, 700, 300);
+		gc.drawImage(start, Game.WIDTH-200, 200);
+		gc.drawImage(quit, Game.WIDTH-168, 300);
 	}
 	
 }

@@ -1,4 +1,5 @@
 package Main;
+
 import InputHandler.KeyboardInput;
 import InputHandler.MouseInput;
 import Worlds.WorldOne;
@@ -9,8 +10,8 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Game extends Application {
 	
@@ -50,12 +51,13 @@ public class Game extends Application {
 	public void start(Stage stage) throws Exception {
 		
 		init();
+		stage.initStyle(StageStyle.UNDECORATED);
 		stage.setScene(scene);
 		stage.setTitle(TITLE);
 		stage.setWidth(WIDTH);
 		stage.setHeight(HEIGHT);
 		stage.setResizable(false);
-		stage.getIcons().add(new Image("/Resources/icon.png"));
+		stage.getIcons().add(new Image("/res/icon.png"));
 		stage.show();
 		
 		//loop
@@ -90,7 +92,7 @@ public class Game extends Application {
 			case "game": keyInput.tick(scene); w1.tick(); break;
 			case "menu": mouseInput.tick(scene) ;break;
 			case "pause": mouseInput.tick(scene); break;
-			case "exit": System.exit(0);
+			case "exit": System.exit(0); break;
 		}
 		
 	}

@@ -11,17 +11,16 @@ public class Player {
 	//player properties
 	private final double PLAYER_WIDTH = 80;
 	private final double PLAYER_HEIGHT = 80;
-	private final Color PLAYER_COLOR = Color.RED;
 	private double xPos;
 	private double yPos;
 	private double speed = 5;
-	private Image player = new Image("/Resources/player.png");
+	private Image player = new Image("/res/player.png");
 	
 	//player images
-	private final Image playerBack = new Image("/Resources/player.png");
-	private final Image playerFront = new Image("/Resources/player-front.png");
-	private final Image playerRside = new Image("/Resources/player-Rside.png");
-	private final Image playerLside = new Image("/Resources/player-Lside.png");
+	private final Image playerBack = new Image("/res/player.png");
+	private final Image playerFront = new Image("/res/player-front.png");
+	private final Image playerRside = new Image("/res/player-Rside.png");
+	private final Image playerLside = new Image("/res/player-Lside.png");
 	
 	
 	//handler

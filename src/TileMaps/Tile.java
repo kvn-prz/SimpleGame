@@ -27,10 +27,10 @@ public class Tile {
 		this.xPos = xPos;
 		this.yPos = yPos;
 		this.type = type;
-		grass = new Image("/Resources/grass.png");
-		border = new Image("/Resources/border.png");
-		dirt = new Image("/Resources/dirt.png");
-		dirtHole = new Image("/Resources/dirt-hole.png");
+		grass = new Image("/res/grass.png");
+		border = new Image("/res/border.png");
+		dirt = new Image("/res/dirt.png");
+		dirtHole = new Image("/res/dirt-hole.png");
 	}
 	
 	public void render(GraphicsContext gc, int type) {

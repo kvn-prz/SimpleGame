@@ -47,6 +47,9 @@ public class WorldOne extends WorldBase {
 		player.render(gc);
 	}
 	
+	@Override
+	public Player getPlayer() {return this.player;}
+	
 	public ArrayList<Tile> makeMap(){
 		for(int y=0; y<9; y++) {
 			for(int x=0; x<15; x++) {

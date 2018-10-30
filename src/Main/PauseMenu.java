@@ -11,17 +11,17 @@ public class PauseMenu {
 	private Image quit;
 	
 	public PauseMenu() {
-		this.bg = new Image("/Resources/menuBG.png");
-		this.resume = new Image("/Resources/resume.png");
-		this.mainMenu = new Image("/Resources/mainMenu.png");
-		this.quit = new Image("/Resources/quit.png");
+		this.bg = new Image("/res/menuBG.png");
+		this.resume = new Image("/res/resume.png");
+		this.mainMenu = new Image("/res/mainMenu.png");
+		this.quit = new Image("/res/quit.png");
 	}
 	
 	public void render(GraphicsContext gc) {
 		gc.drawImage(bg, 0, 0);
-		gc.drawImage(resume, 700, 200);
-		gc.drawImage(mainMenu, 700, 300);
-		gc.drawImage(quit, 700, 400);
+		gc.drawImage(resume, Game.WIDTH-295, 200);
+		gc.drawImage(mainMenu, Game.WIDTH-448, 300);
+		gc.drawImage(quit, Game.WIDTH-168, 400);
 	}
 	
 }
