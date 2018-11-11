@@ -23,7 +23,7 @@ public class KeyboardInput {
 				case A: setLeft(true); break;
 				case D: setRight(true); break;
 				case SPACE: setJump(true); break;
-				case ESCAPE: Game.state = "pause"; break;
+				//TODO pause
 				}}});
 	}
 	

@@ -1,17 +1,17 @@
 package main;
 
 import inputHandler.KeyboardInput;
-import inputHandler.MouseInput;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import worlds.WorldOne;
+import res.Images;
+import states.GameState;
+import states.MenuState;
+import states.State;
 
 public class Game extends Application {
 	
@@ -23,7 +23,7 @@ public class Game extends Application {
 	
 	//input
 	private KeyboardInput keyInput;
-	private MouseInput mouseInput;
+	
 	//handler
 	private Handler handler;
 	
@@ -35,13 +35,12 @@ public class Game extends Application {
 	//window title
 	private static final String TITLE = "Simple Game";
 	
-	//worlds
-	WorldOne w1;
+	//TODO states
+	private State gameState;
+	private State menuState;
 	
-	//states
-	public static String state;
-	private MainMenu menu;
-	private PauseMenu pause;
+	//images
+	private Images images;
 	
 	//launch method for main method
 	public static void launchGame() {launch();}
@@ -49,15 +48,12 @@ public class Game extends Application {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	@Override
 	public void start(Stage stage) throws Exception {
-		
 		init();
-		stage.initStyle(StageStyle.UNDECORATED);
 		stage.setScene(scene);
 		stage.setTitle(TITLE);
 		stage.setWidth(WIDTH);
 		stage.setHeight(HEIGHT);
 		stage.setResizable(false);
-		stage.getIcons().add(new Image("/res/icon.png"));
 		stage.show();
 		
 		//loop
@@ -72,38 +68,26 @@ public class Game extends Application {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	public void init() {
+		//initialize window
 		root = new Pane();
 		scene = new Scene(root);
 		canvas = new Canvas(WIDTH, HEIGHT);
 		gc = canvas.getGraphicsContext2D();
-		keyInput = new KeyboardInput();
-		mouseInput = new MouseInput();
-		handler = new Handler(this);
 		root.getChildren().add(canvas);
 		
-		w1 = new WorldOne(handler);
-		menu = new MainMenu();
-		pause = new PauseMenu();
-		state = "menu";
+		//initialize game utils
+		images = new Images();
+		keyInput = new KeyboardInput();
+		handler = new Handler(this);
+		gameState = new GameState();
+		menuState = new MenuState();
+		State.setState(menuState);
 	}
 	
-	public void tick() {
-		switch(state) {
-			case "game": keyInput.tick(scene); w1.tick(); break;
-			case "menu": mouseInput.tick(scene) ;break;
-			case "pause": mouseInput.tick(scene); break;
-			case "exit": System.exit(0); break;
-		}
-		
-	}
+	//tick and redner
+	public void tick() {if(gameState != null) State.getState().tick();}
+	public void render() {if(gameState != null) State.getState().render(gc);}
 	
-	public void render() {
-		switch(state) {
-			case "game": w1.render(gc); break;
-			case "menu": menu.render(gc); break;
-			case "pause": pause.render(gc);
-		}
-	}
 	
 	//getters
 	public KeyboardInput getKeyInput() {return this.keyInput;}
