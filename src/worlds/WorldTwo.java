@@ -1,4 +1,4 @@
-package Worlds;
+package worlds;
 
 public class WorldTwo {
 

@@ -1,13 +1,13 @@
-package Worlds;
+package worlds;
  
 import java.util.ArrayList;
 
-import Entities.Player;
-import InputHandler.KeyboardInput;
-import Main.Handler;
-import TileMaps.Tile;
+import entities.Player;
+import inputHandler.KeyboardInput;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import main.Handler;
+import tiles.Tile;
 
 public class WorldOne extends WorldBase {
 	

@@ -1,10 +1,10 @@
-package Entities;
+package entities;
 
-import InputHandler.KeyboardInput;
-import Main.Handler;
+import inputHandler.KeyboardInput;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import main.Handler;
 
 public class Player {
 	

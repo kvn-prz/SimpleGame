@@ -1,8 +1,8 @@
-package Worlds;
+package worlds;
 
-import Entities.Player;
-import Main.Handler;
+import entities.Player;
 import javafx.scene.canvas.GraphicsContext;
+import main.Handler;
 
 public abstract class WorldBase {
 	

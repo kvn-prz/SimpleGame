@@ -1,9 +1,9 @@
-package InputHandler;
+package inputHandler;
 
-import Main.Game;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import main.Game;
 
 public class MouseInput {
 	

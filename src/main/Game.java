@@ -1,8 +1,7 @@
-package Main;
+package main;
 
-import InputHandler.KeyboardInput;
-import InputHandler.MouseInput;
-import Worlds.WorldOne;
+import inputHandler.KeyboardInput;
+import inputHandler.MouseInput;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -12,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import worlds.WorldOne;
 
 public class Game extends Application {
 	

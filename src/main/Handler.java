@@ -1,7 +1,7 @@
-package Main;
+package main;
 
-import InputHandler.KeyboardInput;
-import Worlds.WorldBase;
+import inputHandler.KeyboardInput;
+import worlds.WorldBase;
 
 public class Handler {
 	

@@ -1,4 +1,4 @@
-package TileMaps;
+package tiles;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
