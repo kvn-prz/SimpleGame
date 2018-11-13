@@ -1,11 +1,11 @@
-package inputHandler;
+package inputManager;
 
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import main.Game;
 
-public class KeyboardInput {
+public class KeyManager {
 	
 	private boolean isUp = false;
 	private boolean isDown = false;

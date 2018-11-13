@@ -1,6 +1,7 @@
 package main;
 
-import inputHandler.KeyboardInput;
+import inputManager.KeyManager;
+import inputManager.MouseManager;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -9,6 +10,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import res.Images;
+import states.ExitState;
 import states.GameState;
 import states.MenuState;
 import states.State;
@@ -22,22 +24,24 @@ public class Game extends Application {
 	private Scene scene;
 	
 	//input
-	private KeyboardInput keyInput;
+	private KeyManager keyManager;
+	private MouseManager mouseManager;
 	
 	//handler
 	private Handler handler;
 	
 	//root pane properties
-	public static final double SCALE = 2.4;
-	public static final double WIDTH = 500*SCALE;
-	public static final double HEIGHT = 300*SCALE;
+	public static final float SCALE = 2.4F;
+	public static final float WIDTH = 500*SCALE;
+	public static final float HEIGHT = 300*SCALE;
 	
 	//window title
 	private static final String TITLE = "Simple Game";
 	
-	//TODO states
-	private State gameState;
-	private State menuState;
+	//states
+	public static State gameState;
+	public static State menuState;
+	public static State exitState;
 	
 	//images
 	private Images images;
@@ -54,6 +58,7 @@ public class Game extends Application {
 		stage.setWidth(WIDTH);
 		stage.setHeight(HEIGHT);
 		stage.setResizable(false);
+		stage.getIcons().add(Images.icon);
 		stage.show();
 		
 		//loop
@@ -75,22 +80,26 @@ public class Game extends Application {
 		gc = canvas.getGraphicsContext2D();
 		root.getChildren().add(canvas);
 		
-		//initialize game utils
+		//initialize game utilities
 		images = new Images();
-		keyInput = new KeyboardInput();
+		mouseManager = new MouseManager();
+		keyManager = new KeyManager();
 		handler = new Handler(this);
-		gameState = new GameState();
-		menuState = new MenuState();
+		gameState = new GameState(handler);
+		menuState = new MenuState(handler);
+		exitState = new ExitState(handler);
 		State.setState(menuState);
 	}
 	
-	//tick and redner
+	//tick and render
 	public void tick() {if(gameState != null) State.getState().tick();}
 	public void render() {if(gameState != null) State.getState().render(gc);}
 	
-	
 	//getters
-	public KeyboardInput getKeyInput() {return this.keyInput;}
-	public double getWidth() {return WIDTH;}
-	public double getHeight() {return HEIGHT;}	
+	public KeyManager getKeyManager() {return this.keyManager;}
+	public MouseManager getMouseManager() {return this.mouseManager;}
+	public float getWidth() {return WIDTH;}
+	public float getHeight() {return HEIGHT;}
+	public Pane getRoot() {return this.root;}
+	public Scene getScene() {return this.scene;}
 }

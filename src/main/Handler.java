@@ -1,6 +1,6 @@
 package main;
 
-import inputHandler.KeyboardInput;
+import inputManager.KeyManager;
 
 public class Handler {
 	
@@ -13,6 +13,5 @@ public class Handler {
 	//getters
 	public double getWidth() {return game.getWidth();}
 	public double getHeight() {return game.getHeight();}
-	public Game getGame() {return this.game;}
-	public KeyboardInput getKeyInput() {return game.getKeyInput();}	
+	public Game getGame() {return this.game;}	
 }
