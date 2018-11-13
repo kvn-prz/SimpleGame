@@ -19,7 +19,10 @@ public class Images {
 	public static Image[] startButton;
 	
 	//player
-	public static Image player;
+	public static Image[] playerFront;
+	public static Image[] playerUp;
+	public static Image[] playerLeft;
+	public static Image[] playerRight;
 	
 	public Images() {
 		
@@ -40,12 +43,32 @@ public class Images {
 		quitButton[1] = new Image("/res/ui/quitButtonHover.png");
 		
 		//player
-		player = new Image("/res/player/playerFront.png");
-//		player = new Image[4];
-//		player[0] = new Image("/res/player/playerFront.png");
-//		player[1] = new Image("/res/player/playerBack.png");
-//		player[2] = new Image("/res/player/playerRight.png");
-//		player[3] = new Image("/res/player/playerLeft.png");
+		playerFront = new Image[4];
+		playerFront[0] = new Image("/res/player/playerFront01.png");
+		playerFront[1] = new Image("/res/player/playerFront02.png");
+		playerFront[2] = new Image("/res/player/playerFront03.png");
+		playerFront[3] = new Image("/res/player/playerFront04.png");
+		
+		playerUp = new Image[4];
+		playerUp[0] = new Image("/res/player/playerUp01.png");
+		playerUp[1] = new Image("/res/player/playerUp02.png");
+		playerUp[2] = new Image("/res/player/playerUp03.png");
+		playerUp[3] = new Image("/res/player/playerUp04.png");
+		
+		playerLeft = new Image[4];
+		playerLeft[0] = new Image("/res/player/playerLeft01.png");
+		playerLeft[1] = new Image("/res/player/playerLeft02.png");
+		playerLeft[2] = new Image("/res/player/playerLeft03.png");
+		playerLeft[3] = new Image("/res/player/playerLeft04.png");
+		
+		playerRight = new Image[4];
+		playerRight[0] = new Image("/res/player/playerRight01.png");
+		playerRight[1] = new Image("/res/player/playerRight02.png");
+		playerRight[2] = new Image("/res/player/playerRight03.png");
+		playerRight[3] = new Image("/res/player/playerRight04.png");
+		
+		
+		
 		
 	}
 }

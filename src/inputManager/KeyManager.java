@@ -12,17 +12,18 @@ public class KeyManager {
 	private boolean isLeft = false;
 	private boolean isRight = false;
 	private boolean isJump = false;
+	private boolean moving = false;
 	
 	public void pressed(Scene scene) {
 		scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent event) {
 				switch(event.getCode()) {
-				case W: setUp(true); break;
-				case S: setDown(true); break;
-				case A: setLeft(true); break;
-				case D: setRight(true); break;
-				case SPACE: setJump(true); break;
+				case W: setUp(true); moving = true; break;
+				case S: setDown(true); moving = true; break;
+				case A: setLeft(true); moving = true; break;
+				case D: setRight(true); moving = true; break;
+				case SPACE: setJump(true); moving = true; break;
 				//TODO pause
 				}}});
 	}
@@ -32,11 +33,11 @@ public class KeyManager {
 			@Override
 			public void handle(KeyEvent event) {
 				switch(event.getCode()) {
-				case W: setUp(false); break;
-				case S: setDown(false); break;
-				case A: setLeft(false); break;
-				case D: setRight(false); break;
-				case SPACE: setJump(false); break;
+				case W: setUp(false); moving = false; break;
+				case S: setDown(false); moving = false; break;
+				case A: setLeft(false); moving = false; break;
+				case D: setRight(false); moving = false; break;
+				case SPACE: setJump(false); moving = false; break;
 				}}});
 	}
 	
@@ -51,6 +52,7 @@ public class KeyManager {
 	public boolean isLeft() {return isLeft;}
 	public boolean isDown() {return isDown;}
 	public boolean isJump() {return this.isJump;}
+	public boolean isMoving() {return this.moving;}
 	
 	//setters
 	public void setUp(boolean isUp) {this.isUp = isUp;}
