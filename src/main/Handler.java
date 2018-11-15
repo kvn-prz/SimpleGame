@@ -1,7 +1,5 @@
 package main;
 
-import inputManager.KeyManager;
-
 public class Handler {
 	
 	Game game;
@@ -11,7 +9,7 @@ public class Handler {
 	}
 	
 	//getters
-	public double getWidth() {return game.getWidth();}
-	public double getHeight() {return game.getHeight();}
+	public double getWidth() {return Game.WIDTH;}
+	public double getHeight() {return Game.HEIGHT;}
 	public Game getGame() {return this.game;}	
 }

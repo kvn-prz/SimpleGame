@@ -9,6 +9,8 @@ public class Images {
 	public static Image stoneTile;
 	public static Image grassTile;
 	
+	public static Image gameBG;
+	
 	//window
 	public static Image icon;
 	public static Image menuBG;
@@ -29,6 +31,8 @@ public class Images {
 		//tiles
 		stoneTile = new Image("/res/tiles/stone.png");
 		grassTile = new Image("/res/tiles/grass.png");
+		
+		gameBG = new Image("/res/tiles/gameBG.png");
 
 		//window
 		icon = new Image("/res/ui/icon.png");

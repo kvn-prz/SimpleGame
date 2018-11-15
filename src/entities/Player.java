@@ -45,31 +45,28 @@ public class Player {
 		animLeft.tick();
 		animRight.tick();
 		movePlayer();
+		handler.getGame().getGameCamera().centerCameraOnPlayer(this);
 		checkCollision();
 	}
 	
 	public void movePlayer() {
 		//up
 		if(handler.getGame().getKeyManager().isUp()) {
-			moving = true;
 			direction = 1;
 			yPos -= speed;
 		}
 		//down
 		else if(handler.getGame().getKeyManager().isDown()) {
-			moving = true;
 			direction = 2;
 			yPos += speed;
 		}
 		//left
 		else if(handler.getGame().getKeyManager().isLeft()) {
-			moving = true;
 			direction = 3;
 			xPos -= speed;
 		}
 		//right
 		else if(handler.getGame().getKeyManager().isRight()) {
-			moving = true;
 			direction = 4;
 			xPos += speed;
 		}
@@ -84,11 +81,11 @@ public class Player {
 	//render
 	public void render(GraphicsContext gc) {
 		switch (direction) {
-			case 0: gc.drawImage(animDown.getFirstFrame(), xPos, yPos); break;
-			case 1: gc.drawImage(animUp.getCurrentFrame(), xPos, yPos); break;
-			case 2: gc.drawImage(animDown.getCurrentFrame(), xPos, yPos); break;
-			case 3: gc.drawImage(animLeft.getCurrentFrame(), xPos, yPos); break;
-			case 4: gc.drawImage(animRight.getCurrentFrame(), xPos, yPos); break;
+			case 0: gc.drawImage(animDown.getFirstFrame(), xPos - handler.getGame().getGameCamera().getXoffset(), yPos - handler.getGame().getGameCamera().getYoffset()); break;
+			case 1: gc.drawImage(animUp.getCurrentFrame(), xPos - handler.getGame().getGameCamera().getXoffset(), yPos - handler.getGame().getGameCamera().getYoffset()); break;
+			case 2: gc.drawImage(animDown.getCurrentFrame(), xPos - handler.getGame().getGameCamera().getXoffset(), yPos - handler.getGame().getGameCamera().getYoffset()); break;
+			case 3: gc.drawImage(animLeft.getCurrentFrame(), xPos - handler.getGame().getGameCamera().getXoffset(), yPos - handler.getGame().getGameCamera().getYoffset()); break;
+			case 4: gc.drawImage(animRight.getCurrentFrame(), xPos - handler.getGame().getGameCamera().getXoffset(), yPos - handler.getGame().getGameCamera().getYoffset()); break;
 		}
 	}
 	

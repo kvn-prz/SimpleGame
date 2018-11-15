@@ -30,6 +30,9 @@ public class Game extends Application {
 	//handler
 	private Handler handler;
 	
+	//game camera
+	private GameCamera gameCamera;
+	
 	//root pane properties
 	public static final float SCALE = 2.4F;
 	public static final float WIDTH = 500*SCALE;
@@ -85,6 +88,7 @@ public class Game extends Application {
 		mouseManager = new MouseManager();
 		keyManager = new KeyManager();
 		handler = new Handler(this);
+		gameCamera = new GameCamera(0, 0);
 		gameState = new GameState(handler);
 		menuState = new MenuState(handler);
 		exitState = new ExitState(handler);
@@ -98,8 +102,7 @@ public class Game extends Application {
 	//getters
 	public KeyManager getKeyManager() {return this.keyManager;}
 	public MouseManager getMouseManager() {return this.mouseManager;}
-	public float getWidth() {return WIDTH;}
-	public float getHeight() {return HEIGHT;}
 	public Pane getRoot() {return this.root;}
 	public Scene getScene() {return this.scene;}
+	public GameCamera getGameCamera() {return this.gameCamera;}
 }

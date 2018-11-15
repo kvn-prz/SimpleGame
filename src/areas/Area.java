@@ -1,6 +1,7 @@
 package areas;
 
 import javafx.scene.canvas.GraphicsContext;
+import main.Handler;
 import tiles.Tile;
 import utils.Util;
 
@@ -12,8 +13,11 @@ public class Area {
 	private int spawnY;
 	private int[][] map;
 	
-	public Area(String path) {
+	private Handler handler;
+	
+	public Area(Handler handler, String path) {
 		loadArea(path);
+		this.handler = handler;
 	}
 	
 	public void tick() {}
@@ -21,7 +25,7 @@ public class Area {
 	public void render(GraphicsContext gc) {
 		for(int y = 0; y<height; y++) {
 			for(int x = 0; x<width; x++) {
-				getTile(x, y).render(gc, x*Tile.TILEWIDTH, y*Tile.TILEHEIGHT);
+				getTile(x, y).render(gc, x*Tile.TILEWIDTH - handler.getGame().getGameCamera().getXoffset(), y*Tile.TILEHEIGHT - handler.getGame().getGameCamera().getYoffset());
 			}
 		}
 	}
