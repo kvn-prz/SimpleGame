@@ -6,7 +6,7 @@ public class Images {
 	
 	//tiles
 	public static Image borderTile;
-	public static Image dirtTile;
+	public static Image stoneTile;
 	public static Image grassTile;
 	
 	//window
@@ -27,11 +27,10 @@ public class Images {
 	public Images() {
 		
 		//tiles
-		borderTile = new Image("/res/tiles/border.png");
-		dirtTile = new Image("/res/tiles/dirt.png");
+		stoneTile = new Image("/res/tiles/stone.png");
 		grassTile = new Image("/res/tiles/grass.png");
 
-//		//window
+		//window
 		icon = new Image("/res/ui/icon.png");
 		menuBG = new Image("/res/ui/menuBG.png");
 		startButton = new Image[2];

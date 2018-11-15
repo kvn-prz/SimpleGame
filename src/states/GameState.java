@@ -5,6 +5,7 @@ import javafx.scene.canvas.GraphicsContext;
 import main.Game;
 import main.Handler;
 import res.Images;
+import tiles.Tile;
 
 public class GameState extends State {
 	
@@ -24,7 +25,9 @@ public class GameState extends State {
 	@Override
 	public void render(GraphicsContext gc) {
 		gc.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
+		Tile.tiles[1].render(gc, 0, 0);
 		player.render(gc);
+		
 	}
 	
 }
