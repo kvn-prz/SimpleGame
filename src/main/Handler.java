@@ -9,7 +9,5 @@ public class Handler {
 	}
 	
 	//getters
-	public double getWidth() {return Game.WIDTH;}
-	public double getHeight() {return Game.HEIGHT;}
 	public Game getGame() {return this.game;}	
 }

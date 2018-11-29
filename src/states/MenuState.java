@@ -48,6 +48,7 @@ public class MenuState extends State {
 		else startButton.setStyle("-fx-background-image: url('/res/ui/startButton.png')");
 		startButton.setOnMouseClicked(e ->{
 			State.setState(Game.gameState);
+			handler.getGame().getRoot().getChildren().add(GameState.e);
 			handler.getGame().getRoot().getChildren().removeAll(startButton, quitButton);
 		});
 	}

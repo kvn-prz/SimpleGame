@@ -4,6 +4,7 @@ import inputManager.KeyManager;
 import inputManager.MouseManager;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -29,9 +30,6 @@ public class Game extends Application {
 	
 	//handler
 	private Handler handler;
-	
-	//game camera
-	private GameCamera gameCamera;
 	
 	//root pane properties
 	public static final float SCALE = 2.4F;
@@ -75,7 +73,7 @@ public class Game extends Application {
 	}
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	public void init() {
+	public void init() {	
 		//initialize window
 		root = new Pane();
 		scene = new Scene(root);
@@ -88,7 +86,7 @@ public class Game extends Application {
 		mouseManager = new MouseManager();
 		keyManager = new KeyManager();
 		handler = new Handler(this);
-		gameCamera = new GameCamera(0, 0);
+		//initialize states
 		gameState = new GameState(handler);
 		menuState = new MenuState(handler);
 		exitState = new ExitState(handler);
@@ -104,5 +102,5 @@ public class Game extends Application {
 	public MouseManager getMouseManager() {return this.mouseManager;}
 	public Pane getRoot() {return this.root;}
 	public Scene getScene() {return this.scene;}
-	public GameCamera getGameCamera() {return this.gameCamera;}
+	public State getGameState() {return gameState;}
 }

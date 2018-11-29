@@ -14,6 +14,7 @@ public class Images {
 	//window
 	public static Image icon;
 	public static Image menuBG;
+	public static Image cursor;
 	//buttons
 	public static Image[] mainMenuButton;
 	public static Image[] quitButton;
@@ -36,6 +37,7 @@ public class Images {
 
 		//window
 		icon = new Image("/res/ui/icon.png");
+		cursor = new Image("/res/ui/cursor.png");
 		menuBG = new Image("/res/ui/menuBG.png");
 		startButton = new Image[2];
 		startButton[0] = new Image("/res/ui/startButton.png");
